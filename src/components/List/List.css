@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+}
+
+.form input {
+  flex: 1;
+}
+
+.list {
+  height: 350px;
+  overflow-y: auto;
+  border: 1px solid;
+  margin: 6px 0;
+}

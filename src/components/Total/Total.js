@@ -1,5 +1,5 @@
 export function Total() {
   return <>
-    Total
+    Total: 0/1
   </>
 }

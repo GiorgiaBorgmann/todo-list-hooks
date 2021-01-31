@@ -1,5 +1,7 @@
 ## Let's do some fun with React hooks
 
+<img width="350px" src="./mockup.png">
+
 The goal in this task is to make the todo list to work with React hooks
 
 - Make *src/components/Item/Item.js* to work
@@ -10,8 +12,8 @@ The goal in this task is to make the todo list to work with React hooks
 
 - When adding an item:
   1. Call the api
-  2. Show the loader
+  2. Set the button's text to "Adding.."
   3. Wait for fulfilled
-  4. Hide the loader
+  4. Set the button's text back to "Add"
   5. Add the item to the list
 

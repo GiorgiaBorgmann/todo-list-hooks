@@ -1,6 +1,8 @@
 export function Item() {
-  return <>
-    <input type="checkbox" />
-    Label
-  </>
+  return <div>
+    <label>
+      <input type="checkbox" />
+      Label
+    </label>
+  </div>
 }
