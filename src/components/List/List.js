@@ -1,6 +1,7 @@
 import { Item } from "../Item/Item";
 import "./List.css";
 import { Total } from "../Total/Total";
+import { callToServer } from "../../api";
 import React, { useState, useReducer } from "react";
 
 export const actions = {
@@ -12,6 +13,8 @@ export const TotalContext = React.createContext();
 
 export function List() {
   const [userInput, setUserInput] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const reducer = (listToDos, action) => {
     switch (action.type) {
       case actions.addTask:
@@ -39,10 +42,17 @@ export function List() {
     return newToDo;
   }
 
-  const handleAdd = (event) => {
-    event.preventDefault();
-    dispatch({ type: actions.addTask, payload: { userInput: userInput } });
-    setUserInput("");
+  const handleAdd = async (event) => {
+    try {
+      event.preventDefault();
+      setLoading(true);
+      await callToServer();
+      dispatch({ type: actions.addTask, payload: { userInput: userInput } });
+      setUserInput("");
+      setLoading(false);
+    } catch {
+      return console.error();
+    }
   };
   return (
     <TotalContext.Provider value={listToDos}>
@@ -52,7 +62,11 @@ export function List() {
           value={userInput}
           onChange={(event) => setUserInput(event.target.value)}
         />
-        <button onClick={handleAdd}>Add</button>
+        {loading ? (
+          <button onClick={handleAdd}>Adding...</button>
+        ) : (
+          <button onClick={handleAdd}>Add</button>
+        )}
       </div>
       <div className="list">
         {listToDos.map((item) => (
