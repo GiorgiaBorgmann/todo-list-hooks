@@ -7,6 +7,7 @@ import React, { useState, useReducer } from "react";
 export const actions = {
   addTask: "addTask",
   completeToDo: "completeToDo",
+  editText: "editText",
 };
 
 export const TotalContext = React.createContext();
@@ -23,6 +24,13 @@ export function List() {
         return listToDos.map((item) => {
           if (item.id === action.payload.id) {
             return { ...item, completed: !item.completed };
+          }
+          return item;
+        });
+      case actions.editText:
+        return listToDos.map((item) => {
+          if (item.id === action.payload.id) {
+            return { ...item, toDoText: action.payload.toDoText };
           }
           return item;
         });

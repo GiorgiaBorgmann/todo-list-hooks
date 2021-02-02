@@ -1,0 +1,19 @@
+.item-container{
+    display: flex;
+    align-items: center;
+}
+.todo-text{
+    border: none;
+    background-color: transparent;
+    color:white;
+    text-decoration: none ;
+    width: 100%;
+}
+.todo-text-done{
+    border: none;
+    background-color: transparent;
+    color:white;
+    text-decoration: none ;
+    text-decoration: line-through;
+    width: 100%;
+}
