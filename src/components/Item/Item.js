@@ -1,8 +1,10 @@
-export function Item() {
-  return <div>
-    <label>
-      <input type="checkbox" />
-      Label
-    </label>
-  </div>
+export function Item({ toDoTask }) {
+  return (
+    <div>
+      <label>
+        <input type="checkbox" />
+        {toDoTask.toDoText}
+      </label>
+    </div>
+  );
 }
