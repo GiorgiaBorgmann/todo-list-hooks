@@ -1,9 +1,11 @@
 import { Item } from "../Item/Item";
 import "./List.css";
+import { Total } from "../Total/Total";
 import React, { useState, useReducer } from "react";
 
 export const actions = {
   addTask: "addTask",
+  completeToDo: "completeToDo"
 };
 
 export function List() {
@@ -52,7 +54,7 @@ export function List() {
       </div>
       <div className="list">
         {listToDos.map((item) => (
-          <Item key={item.id} toDoTask={item} />
+          <Item key={item.id} toDoTask={item} dispatch={dispatch} />
         ))}
       </div>
     </>
