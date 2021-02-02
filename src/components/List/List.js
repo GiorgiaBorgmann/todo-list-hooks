@@ -5,8 +5,10 @@ import React, { useState, useReducer } from "react";
 
 export const actions = {
   addTask: "addTask",
-  completeToDo: "completeToDo"
+  completeToDo: "completeToDo",
 };
+
+export const TotalContext = React.createContext();
 
 export function List() {
   const [userInput, setUserInput] = useState("");
@@ -43,7 +45,7 @@ export function List() {
     setUserInput("");
   };
   return (
-    <>
+    <TotalContext.Provider value={listToDos}>
       <div className="form">
         <input
           type="text"
@@ -57,6 +59,7 @@ export function List() {
           <Item key={item.id} toDoTask={item} dispatch={dispatch} />
         ))}
       </div>
-    </>
+      <Total />
+    </TotalContext.Provider>
   );
 }

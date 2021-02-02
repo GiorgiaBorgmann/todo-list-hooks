@@ -1,5 +1,23 @@
+import { useContext } from "react";
+import { TotalContext } from "../List/List";
+
 export function Total() {
-  return <>
-    Total: 0/1
-  </>
+  const listToDos = useContext(TotalContext);
+  let counter = 0;
+
+  const countCompletedTasks = () => {
+    if (listToDos) {
+      for (let i = 0; i < listToDos.length; i++) {
+        if (listToDos[i].completed === true) {
+          counter++;
+        }
+      }
+    }
+    return counter;
+  };
+  return (
+    <>
+      Total: {countCompletedTasks()}/{listToDos && listToDos.length}
+    </>
+  );
 }
