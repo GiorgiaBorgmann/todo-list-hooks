@@ -1,14 +1,28 @@
 .form {
   display: flex;
 }
-
 .form input {
   flex: 1;
+  background-color: white;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  height: 30px;
 }
-
+.form button {
+  background-color: rgba(148, 187, 233, 1);
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 0 5px 5px 0;
+}
+.form button:hover {
+  background-color: rgba(238, 174, 202, 1);
+  color: white;
+}
 .list {
   height: 350px;
   overflow-y: auto;
-  border: 1px solid;
+  border: 2px solid white;
+  border-radius: 5px;
   margin: 6px 0;
 }
