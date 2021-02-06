@@ -23,7 +23,7 @@ export function List() {
       case actions.completeToDo:
         return listToDos.map((item) => {
           if (item.id === action.payload.id) {
-            return { ...item, completed: !item.completed };
+            return { ...item, completeToDo: !item.completeToDo };
           }
           return item;
         });
@@ -45,7 +45,7 @@ export function List() {
     const newToDo = {
       id: Math.random(),
       toDoText: userInput,
-      completed: false,
+      completeToDo: false,
     };
     return newToDo;
   }
@@ -63,25 +63,24 @@ export function List() {
     }
   };
   return (
-    <TotalContext.Provider value={listToDos}>
+    <>
       <div className="form">
         <input
+          data-testid={"todo-input"}
           type="text"
           value={userInput}
           onChange={(event) => setUserInput(event.target.value)}
         />
-        {loading ? (
-          <button onClick={handleAdd}>Adding...</button>
-        ) : (
-          <button onClick={handleAdd}>Add</button>
-        )}
+        <button disabled={userInput === ""} onClick={handleAdd}>{loading ? "Adding...":"Add"}</button>
       </div>
-      <div className="list">
+      <div className="list" data-testid={"todo-list"}>
         {listToDos.map((item) => (
           <Item key={item.id} toDoTask={item} dispatch={dispatch} />
         ))}
       </div>
-      <Total />
-    </TotalContext.Provider>
+      <TotalContext.Provider value={listToDos}>
+        <Total />
+      </TotalContext.Provider>
+    </>
   );
 }

@@ -7,6 +7,7 @@ export function Item({ toDoTask, dispatch }) {
       <input
         type="checkbox"
         checked={toDoTask.completeToDo}
+        
         onChange={() =>
           dispatch({
             type: actions.completeToDo,
@@ -16,12 +17,13 @@ export function Item({ toDoTask, dispatch }) {
       />
       <input
         className={
-          toDoTask.completed
+          toDoTask.completeToDo
             ? 'todo-text-done'
             : 'todo-text'
         }
         id={toDoTask.id}
         value={toDoTask.toDoText}
+        data-testid={"toDoTask-input"}
         onChange={(e)=> 
         dispatch({type: actions.editText, payload: {toDoText: e.target.value, id: toDoTask.id }})}
       > 
